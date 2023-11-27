@@ -7,7 +7,7 @@ class Ball:
         self.data = data
         self.max_elements = max_elements
 
-        if data.shape[0] >= max_elements:
+        if data.shape[0] > max_elements:
             self.__addChilds()
             self.is_leaf = False
         else:
