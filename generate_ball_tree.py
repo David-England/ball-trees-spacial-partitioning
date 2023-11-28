@@ -2,9 +2,10 @@ import numpy as np
 
 
 class Ball:
-    def __init__(self, parent, data, max_elements):
+    def __init__(self, parent, data, labels, max_elements):
         self.parent = parent
         self.data = data
+        self.labels = labels
         self.max_elements = max_elements
 
         if data.shape[0] > max_elements:
@@ -40,8 +41,8 @@ class Ball:
             else:
                 child1.append(i)
 
-        self.Child1 = Ball(self, self.data[child1, :], self.max_elements)
-        self.Child2 = Ball(self, self.data[child2, :], self.max_elements)
+        self.Child1 = Ball(self, self.data[child1, :], self.labels[child1], self.max_elements)
+        self.Child2 = Ball(self, self.data[child2, :], self.labels[child2], self.max_elements)
 
 
 def dist(x, y):
