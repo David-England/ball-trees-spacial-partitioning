@@ -7,6 +7,9 @@ class Ball:
         self.data = data
         self.labels = labels
         self.max_elements = max_elements
+        
+        self.centroid = np.array(data.mean(axis=0))
+        self.radius = dist(self.centroid, data[self.__furthest_from(self.centroid), :])
 
         if data.shape[0] > max_elements:
             self.__addChilds()
@@ -28,8 +31,7 @@ class Ball:
         return dist(self.data[i, :], self.data[j, :])
 
     def __addChilds(self):
-        centroid = np.array(self.data.mean(axis=0))
-        anchor1_index = self.__furthest_from(centroid)
+        anchor1_index = self.__furthest_from(self.centroid)
         anchor2_index = self.__furthest_from(self.data[anchor1_index, :])
 
         child1 = []
