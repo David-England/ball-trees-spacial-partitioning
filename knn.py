@@ -23,10 +23,17 @@ class SortedPointSet:
         self.d_sofar = self.points[-1].distance_to_point
 
     def most_frequent_label(self):
-        labels = [p.label for p in self.points]
-        label_values, label_counts = np.unique(labels, return_counts=True)
-        # Institutes a bias in the multimodal case due to implicit sorting of keys.
-        return label_values[np.argmax(label_counts)]
+        labels = []
+        counts = []
+
+        for lab in [p.label for p in self.points]:
+            if lab in labels:
+                counts[labels.index(lab)] += 1
+            else:
+                labels.append(lab)
+                counts.append(1)
+        
+        return labels[np.argmax(counts)]
 
 
 def knn_ball_tree(k):
