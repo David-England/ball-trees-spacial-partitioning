@@ -25,4 +25,11 @@ def knn_ball_tree(k):
 
         return working_points, d_sofar
 
-    return lambda point, ball: _run_knn(k, point, ball)[0]
+    return lambda point, ball: decide_node(_run_knn(k, point, ball)[0])
+
+
+def decide_node(working_points):
+    labels = [p[2] for p in working_points]
+    label_values, label_counts = np.unique(labels, return_counts=True)
+    # Institutes a bias in the multimodal case due to implicit sorting of keys.
+    return label_values[np.argmax(label_counts)]
