@@ -30,15 +30,20 @@ class SortedPointSet:
 
 
 def knn_ball_tree(k):
-    def _run_knn(k, point, ball, d_min_ancestors = 0, working_set = SortedPointSet()):
-        d_min = max(dist(point, ball.centroid) - ball.radius, d_min_ancestors)
+    def _run_knn(k, point, ball, d_min = 0, working_set = SortedPointSet()):
         if d_min >= working_set.d_sofar:
             return working_set
 
-        # If not leaf, recurse on both children, starting with the closest (this optimisation not yet implemented).
         elif (not ball.is_leaf):
-            working_set = _run_knn(k, point, ball.Child1, d_min, working_set)
-            working_set = _run_knn(k, point, ball.Child2, d_min, working_set)
+            d_min_child1 = max(dist(point, ball.Child1.centroid) - ball.Child1.radius, d_min)
+            d_min_child2 = max(dist(point, ball.Child2.centroid) - ball.Child2.radius, d_min)
+
+            if (d_min_child1 <= d_min_child2):
+                _run_knn(k, point, ball.Child1, d_min_child1, working_set)
+                _run_knn(k, point, ball.Child2, d_min_child2, working_set)
+            else:
+                _run_knn(k, point, ball.Child2, d_min_child2, working_set)
+                _run_knn(k, point, ball.Child1, d_min_child1, working_set)
 
         else:
             for i in range(ball.data.shape[0]):
