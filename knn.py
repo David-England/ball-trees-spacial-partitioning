@@ -1,5 +1,5 @@
 import numpy as np
-import generate_ball_tree as gbt
+import ball_trees.generate_ball_tree as gbt
 
 
 class LabelledPoint:

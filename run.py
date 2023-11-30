@@ -1,6 +1,6 @@
-import spawn_sample_data as ssd
-import generate_ball_tree as gbt
-import knn
+import ball_trees.spawn_sample_data as ssd
+import ball_trees.generate_ball_tree as gbt
+import ball_trees.knn as knn
 
 b = gbt.Ball(0, ssd.labelled_data[:, :-1], ssd.labelled_data[:, -1], 20)
 
