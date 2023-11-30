@@ -1,8 +1,8 @@
 import ball_trees.spawn_sample_data as ssd
-import ball_trees.generate_ball_tree as gbt
+from ball_trees.constructs import Ball
 import ball_trees.knn as knn
 
-b = gbt.Ball(0, ssd.labelled_data[:, :-1], ssd.labelled_data[:, -1], 20)
+b = Ball(0, ssd.labelled_data[:, :-1], ssd.labelled_data[:, -1], 20)
 
 results = []
 for i in range(ssd.unlabelled.shape[0]):

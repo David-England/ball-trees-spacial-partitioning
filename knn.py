@@ -1,5 +1,5 @@
 import numpy as np
-import ball_trees.generate_ball_tree as gbt
+from ball_trees.constructs import dist
 
 
 class LabelledPoint:
@@ -31,7 +31,7 @@ class SortedPointSet:
 
 def knn_ball_tree(k):
     def _run_knn(k, point, ball, d_min_ancestors = 0, working_set = SortedPointSet()):
-        d_min = max(gbt.dist(point, ball.centroid) - ball.radius, d_min_ancestors)
+        d_min = max(dist(point, ball.centroid) - ball.radius, d_min_ancestors)
         if d_min >= working_set.d_sofar:
             return working_set
 
@@ -42,7 +42,7 @@ def knn_ball_tree(k):
 
         else:
             for i in range(ball.data.shape[0]):
-                d_point = gbt.dist(point, ball.data[i, :])
+                d_point = dist(point, ball.data[i, :])
                 if d_point < working_set.d_sofar:
                     working_set.add_point(ball.data[i, :], ball.labels[i], d_point)
                     while (len(working_set.points) > k):
