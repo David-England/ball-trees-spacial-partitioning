@@ -63,3 +63,19 @@ def knn_ball_tree(k):
         return working_set
 
     return lambda point, ball: _run_knn(k, point, ball).most_frequent_label()
+
+
+def knn_naive(k):
+    def _run_knn(k, point, data, labels):
+        working_set = SortedPointSet()
+
+        for i in range(data.shape[0]):
+            d_point = dist(point, data[i, :])
+            if d_point < working_set.d_sofar:
+                working_set.add_point(data[i, :], labels[i], d_point)
+                while (len(working_set.points) > k):
+                    working_set.bin_furthest_member()
+
+        return working_set
+
+    return lambda point, data, labels: _run_knn(k, point, data, labels).most_frequent_label()
