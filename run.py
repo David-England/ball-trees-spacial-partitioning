@@ -2,6 +2,7 @@ import datetime
 import ball_trees.spawn_sample_data as ssd
 from ball_trees.constructs import Ball
 import ball_trees.knn as knn
+import ball_trees.vis_sample_data as vsd
 
 #---- Naive approach
 dt_nv1 = datetime.datetime.now()
@@ -28,3 +29,5 @@ print("NAIVE:", (dt_nv2 - dt_nv1).seconds, "s")
 print(results_nv[:15])
 print("BALL TREE:", (dt_bt2 - dt_bt1).seconds, "s")
 print(results_bt[:15])
+
+vsd.plot_ball_2D(b, 5)
