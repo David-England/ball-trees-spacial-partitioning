@@ -3,8 +3,6 @@ import ball_trees.spawn_sample_data as ssd
 from ball_trees.constructs import Ball
 import ball_trees.knn as knn
 
-b = Ball(0, ssd.labelled_data[:, :-1], ssd.labelled_data[:, -1], 20)
-
 #---- Naive approach
 dt_nv1 = datetime.datetime.now()
 
@@ -16,6 +14,8 @@ dt_nv2 = datetime.datetime.now()
 
 #---- Ball tree approach
 dt_bt1 = datetime.datetime.now()
+
+b = Ball(0, ssd.labelled_data[:, :-1], ssd.labelled_data[:, -1], 20)
 
 results_bt = []
 for i in range(ssd.unlabelled.shape[0]):
