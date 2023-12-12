@@ -1,7 +1,7 @@
 import datetime
-import ball_trees.spawn_sample_data as ssd
 from ball_trees.constructs import Ball
 import ball_trees.knn as knn
+import ball_trees.spawn_sample_data as ssd
 import ball_trees.vis_sample_data as vsd
 
 #---- Naive approach
