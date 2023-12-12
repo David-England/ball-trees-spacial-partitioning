@@ -30,4 +30,4 @@ print(results_nv[:15])
 print("BALL TREE:", (dt_bt2 - dt_bt1).seconds, "s")
 print(results_bt[:15])
 
-vsd.plot_ball_2D(b, 5)
+vsd.plot_ball_2D(b, 4)
