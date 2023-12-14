@@ -7,10 +7,12 @@ For every unlabelled data point requiring classification, a naive search compute
 
 To have a play, run the following scripts:
 * *run.py*: runs a kNN search on synthetic two-dimensional data. We output two .png files: *sample.png* displays the labelled data, and *sample_with_treetop.png* overlays it with the top four levels of the ball tree (the jury is certainly out over whether it aids visual intuition or not). On my developer machine, the ball tree approach consistently yields a ~16x improvement in runtime over the naive search.
-* *run_digits.py*: uses the algorithm to classify the well-known "digits" dataset with 98.9% accuracy. The literature suggests the execution time advantage of ball tree search disappears when the dimensionality of the data is high; this 64D example illustrates this.
+* *run_digits.py*: uses the algorithm to classify the well-known "digits" dataset with 98.9% accuracy. Unfortunately the execution time advantage has disappeared; tuning the hyperparameters may yield better results.
 
 ## References
 Wikipedia: https://en.wikipedia.org/wiki/Ball_tree
+
+scikit-learn: https://scikit-learn.org/stable/modules/neighbors.html#ball-tree
 
 A couple of useful papers:
 * For a description about how to generate a ball tree: https://arxiv.org/abs/1511.00628
