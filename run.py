@@ -1,20 +1,20 @@
-import datetime
+from datetime import datetime
 from ball_trees.constructs import Ball
 import ball_trees.knn as knn
 import ball_trees.spawn_sample_data as ssd
 import ball_trees.vis_sample_data as vsd
 
 #---- Naive approach
-dt_nv1 = datetime.datetime.now()
+dt_nv1 = datetime.now()
 
 results_nv = []
 for i in range(ssd.unlabelled.shape[0]):
     results_nv.append(knn.knn_naive(3)(ssd.unlabelled[i, :], ssd.labelled_data[:, :-1], ssd.labelled_data[:, -1]))
 
-dt_nv2 = datetime.datetime.now()
+dt_nv2 = datetime.now()
 
 #---- Ball tree approach
-dt_bt1 = datetime.datetime.now()
+dt_bt1 = datetime.now()
 
 b = Ball(0, ssd.labelled_data[:, :-1], ssd.labelled_data[:, -1], 20)
 
@@ -22,7 +22,7 @@ results_bt = []
 for i in range(ssd.unlabelled.shape[0]):
     results_bt.append(knn.knn_ball_tree(3)(ssd.unlabelled[i, :], b))
 
-dt_bt2 = datetime.datetime.now()
+dt_bt2 = datetime.now()
 
 #---- Print results to console
 print("NAIVE:", (dt_nv2 - dt_nv1).seconds, "s")

@@ -1,5 +1,4 @@
 from datetime import datetime
-import numpy as np
 import sklearn.datasets as datasets
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split
