@@ -1,4 +1,4 @@
-from constructs import Ball
+from ball_trees.constructs import Ball
 from matplotlib import pyplot as plt
 from matplotlib import colormaps as cmaps
 import matplotlib.patches as patches

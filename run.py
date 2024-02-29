@@ -1,8 +1,8 @@
 from datetime import datetime
 from ball_trees.constructs import Ball
 import ball_trees.knn as knn
-import ball_trees.spawn_sample_data as ssd
-import ball_trees.vis_sample_data as vsd
+import spawn_sample_data as ssd
+import vis_sample_data as vsd
 
 #---- Naive approach
 dt_nv1 = datetime.now()
